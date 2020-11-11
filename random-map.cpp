@@ -4,11 +4,8 @@
 
 #include <iostream>
 #include <iomanip>
-#include <string>
 #include <map>
 #include <random>
-#include <cmath>
-#include <vector>
 #include "RandomBetween.h"
 
 int main(){
@@ -35,5 +32,23 @@ int main(){
     }
     std::cout << "Normal distribution between "<< first<<" and " << last << ":\n";
     PrintDistribution(normal);
+    //histogram for uniform distribution
+    std::map<int, int> uniform;
+    for (int i = 0; i < 100000; i++)
+    {
+        ++uniform[RandomBetweenU(first, last, e2)];
+    }
+    std::cout << "Uniform distribution between " << first << " and " << last << ":\n";
+    PrintDistribution(uniform);
+
+
+
+    std::map<int, int> rand;
+    for (int i = 0; i < 100000; i++)
+    {
+        ++rand[RandomBetween(first, last)];
+    }
+    std::cout << "Random distribution between " << first << " and " << last << ":\n";
+    PrintDistribution(rand);
 
 }
