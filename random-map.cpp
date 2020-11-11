@@ -27,4 +27,13 @@ int main(){
     std::seed_seq seed2{r(), r(), r(), r(), r(), r(), r(), r()};
     std::mt19937 e2(seed2);
 
+
+    std::map<int, int> normal;
+    for (int i = 0; i < 100000; i++)
+    {
+        ++normal[RandomBetweenN(first, last, e2)];
+    }
+    std::cout << "Normal distribution between "<< first<<" and " << last << ":\n";
+    PrintDistribution(normal);
+
 }
